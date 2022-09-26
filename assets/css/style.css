@@ -1,0 +1,14 @@
+.header {
+    text-align:right;
+    padding-right: 25%;
+    color: aliceblue;
+    background-image: linear-gradient(to right, rgb(0, 0, 200), rgb(0, 0, 75));
+}
+
+#search-button {
+    color: aliceblue;
+    background-color: cornflowerblue;
+    width: 185px;
+    margin-top: 10px;
+    border-radius: 25px;
+}
