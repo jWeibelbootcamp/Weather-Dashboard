@@ -25,27 +25,30 @@
 // 0) Very first thing, write a function that calls the openweathermap api
 // and see if I can console. log the data.
 
-var apiKey = "27628dc2d5b017cf1761f1dbe7dffc83";
 
-$("#search-button").click(function() {
-    var city = document.getElementById("search-bar").value; //not working
-    // callAPI(city);
-    console.log(city);
-})
+var city = document.getElementById("user-input").value; // apparently i'm fucking stupid and can't store user input in a variable.
 
-function callAPI(city) {
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
-    fetch(queryURL).then(function(response){
-        return response.json()
-    }) .then(function(data) {
-        console.log(data);
+function callAPI() {
+    var apiKey = "27628dc2d5b017cf1761f1dbe7dffc83";
+    var requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + "atlanta" + "&appid=" + apiKey; //replace atlanta w/ city variable when i figure that out.
+    console.log(requestURL);
+
+    function getAPI(requestURL) {
+        fetch(requestURL)
+            .then(function (response) {
+                return response.json();
+            }) .then(function(data) {
+                console.log(data);
+            })
+    }
+    getAPI(requestURL);
         
-        var cityName = data.name; 
-        var card = $("<div>").addClass("card");
-        var cardHeader = $("<div>").addClass("card-header");
-        var cardBody = $("<div>").addClass("card-body");
-        var cardTitle = $("<h2>").addClass("card-title").text(cityName);
-        var imgEl = $("<img>").attr("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
+    var cityName = data.name; 
+    var card = $("<div>").addClass("card");
+    var cardHeader = $("<div>").addClass("card-header");
+    var cardBody = $("<div>").addClass("card-body");
+    var cardTitle = $("<h2>").addClass("card-title").text(cityName);
+    var imgEl = $("<img>").attr("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
 
         $("#today-weather").append(card.append(cardHeader.append(cardTitle.append(imgEl)), cardBody));
 
@@ -53,19 +56,19 @@ function callAPI(city) {
         var lon = data.coord.lon;
         
         getForecast(lat, lon, cityName);
-    })
-    
 }
 
-function getForecast(lat, lon, cityName) {
-    var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-    fetch(queryURL).then(function(response){
-        return response.json()
-    }) .then(function(data) {
-        console.log(data);
+callAPI();
+
+// function getForecast(lat, lon, cityName) {
+    // var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+//     fetch(queryURL).then(function(response){
+//         return response.json()
+//     }) .then(function(data) {
+//         console.log(data);
         
-        var newArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === "12:00:00");
-        console.log(newArray);
+//         var newArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === "12:00:00");
+//         console.log(newArray);
 
         // loop over newArray for each card
 
@@ -75,8 +78,8 @@ function getForecast(lat, lon, cityName) {
         //     console.log(forecastHour);
         //     data.list[i]
         // }
-    })
-}
+//     })
+// }
 
 
 
