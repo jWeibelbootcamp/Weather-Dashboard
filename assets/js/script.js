@@ -21,16 +21,19 @@
 // weather data will re-populate the page.
 
 
+function userInput() {
+    var city = document.getElementById("user-input").value;
+    console.log(city);
 
-// 0) Very first thing, write a function that calls the openweathermap api
-// and see if I can console. log the data.
+    document.getElementById("user-input") = "";
+    callAPI(city);
+
+}
 
 
-var city = document.getElementById("user-input").value; // apparently i'm fucking stupid and can't store user input in a variable.
-
-function callAPI() {
+function callAPI(city) {
     var apiKey = "27628dc2d5b017cf1761f1dbe7dffc83";
-    var requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + "atlanta" + "&appid=" + apiKey; //replace atlanta w/ city variable when i figure that out.
+    var requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey; //replace atlanta w/ city variable when i figure that out.
     console.log(requestURL);
 
     function getAPI(requestURL) {
@@ -41,9 +44,11 @@ function callAPI() {
                 console.log(data);
             })
     }
-    getAPI(requestURL);
+}
+
+getAPI(requestURL) {
         
-    var cityName = data.name; 
+    var cityName = data.name;
     var card = $("<div>").addClass("card");
     var cardHeader = $("<div>").addClass("card-header");
     var cardBody = $("<div>").addClass("card-body");
@@ -58,28 +63,26 @@ function callAPI() {
         getForecast(lat, lon, cityName);
 }
 
-callAPI();
-
-// function getForecast(lat, lon, cityName) {
-    // var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-//     fetch(queryURL).then(function(response){
-//         return response.json()
-//     }) .then(function(data) {
-//         console.log(data);
+function getForecast(lat, lon, cityName) {
+    var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+    fetch(queryURL).then(function(response){
+        return response.json()
+    }) .then(function(data) {
+        console.log(data);
         
-//         var newArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === "12:00:00");
-//         console.log(newArray);
+        var newArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === "12:00:00");
+        console.log(newArray);
 
         // loop over newArray for each card
 
-        // for (var i = 0; i < data.list.length; i++) {
-        //     console.log(data.list[i]);
-        //     var forecastHour = data.list[i].dt_txt.split(" ")[1]; // splits forecast date and time by the blank space, then selects the second in the array.
-        //     console.log(forecastHour);
-        //     data.list[i]
-        // }
-//     })
-// }
+        for (var i = 0; i < data.list.length; i++) {
+            console.log(data.list[i]);
+            var forecastHour = data.list[i].dt_txt.split(" ")[1]; // splits forecast date and time by the blank space, then selects the latter in the array.
+            console.log(forecastHour);
+            data.list[i]
+        }
+    })
+}
 
 
 
