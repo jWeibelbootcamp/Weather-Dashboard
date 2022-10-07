@@ -1,18 +1,24 @@
-// search that takes user input and calls the current weather API.
-function userInput() {
+// search that takes user input and calls currentWeather().
+function citySearch(event) {
+    event.preventDefault();
     var city = document.getElementById("user-input").value;
-    console.log(city);
-
-    document.getElementById("user-input") = "";
-    callAPI(city);
-
+    if (city.value === '') {
+        alert('Please enter a city name.'); //this alert isn't working
+    // } else if () { way to handle a misspelling?
+    } else {
+        console.log(city);
+        currentWeather(city);
+    }
 }
 
+// search button
+var button = document.getElementById('search-button');
+button.addEventListener('click', citySearch);
+
 // current weather API call - calls 5-day forecast at the end
-callAPI();
-function callAPI(city) {
+function currentWeather(city) {
     var apiKey = "27628dc2d5b017cf1761f1dbe7dffc83";
-    var requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey; 
+    var requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial"; 
     console.log(requestURL);
 
     function getAPI(requestURL) {
@@ -37,30 +43,31 @@ function callAPI(city) {
         var lat = data.coord.lat;
         var lon = data.coord.lon;
         
-        getForecast(lat, lon, cityName);
+        // getForecast(lat, lon, cityName);
 }
 
-// 5-day forecast
-function getForecast(lat, lon, cityName) {
-    var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-    fetch(queryURL).then(function(response){
-        return response.json()
-    }) .then(function(data) {
-        console.log(data);
+// // 5-day forecast
+// function getForecast(lat, lon, cityName) {
+//     var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+//     fetch(queryURL).then(function(response){
+//         return response.json()
+//     }) .then(function(data) {
+//         console.log(data);
         
-        var newArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === "12:00:00");
-        console.log(newArray);
+//         var newArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === "12:00:00");
+//         console.log(newArray);
 
-        // loop over newArray for each card
+//         // loop over newArray for each card
 
-        for (var i = 0; i < data.list.length; i++) {
-            console.log(data.list[i]);
-            var forecastHour = data.list[i].dt_txt.split(" ")[1]; // splits forecast date and time by the blank space, then selects the latter in the array.
-            console.log(forecastHour);
-            data.list[i]
-        }
-    })
-}
+//         for (var i = 0; i < data.list.length; i++) {
+//             console.log(data.list[i]);
+//             var forecastHour = data.list[i].dt_txt.split(" ")[1]; // splits forecast date and time by the blank space, then selects the latter in the array.
+//             console.log(forecastHour);
+//             data.list[i]
+//         }
+//     })
+// }
+
 
 // https://openweathermap.org/api/one-call-api
 // https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
