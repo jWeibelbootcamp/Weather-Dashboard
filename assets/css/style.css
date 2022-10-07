@@ -12,3 +12,13 @@
     margin-top: 10px;
     border-radius: 25px;
 }
+
+.flex-parent {
+    display:flex;
+    flex-direction: row;
+    margin-top: 2em;
+}
+
+.flex-child {
+    flex-basis: 20%;
+}

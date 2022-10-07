@@ -15,26 +15,29 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-    <div id="search-bar" class="col-3">
-        <h3>Search For A City:</h3>
-        
-        <input id="user-input" type="text" placeholder="City Name"><br>
-        <button id="search-button" type="button">Search</button>
-        
-        <ul id="search-history" class="list-group">
-            <!-- to append search history -->
-        </ul>
+    <div class="row">
+        <div id="search-bar" class="col-3">
+            <h3>Search For A City:</h3>
+
+            <input id="user-input" type="text" placeholder="City Name"><br>
+            <button id="search-button" type="button">Search</button>
+
+            <ul id="search-history" class="list-group">
+                <!-- to append search history -->
+            </ul>
+        </div>
+
+        <div class="col-9">
+            <div id="today-weather"></div>
+            <!-- to append current day's weather -->
+            <div id="5-day-forecast" class="container flex-parent">
+                <!-- to append 5-day weather -->
+            </div>
+        </div>
     </div>
 
-    <div id="today-weather" class="col-9">
-        <!-- to append current day's weather -->
-    </div>
 
-    <div id="5-day-forecast" class="container">
-        <!-- to append 5-day weather -->
-    </div>
 
-   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
