@@ -1,26 +1,4 @@
-// https://openweathermap.org/api/one-call-api
-// https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
-// ADVICE COLUMN = for this openweathermap api, you will access TWO SEPARATE
-// API CALLS to get this one. (there are two separate urls from the
-// openweathermap website)
-
-// ### I need to do the following:
-// 1) I need to accept a user input that is a city name and it returns the
-// CURRENT DAY'S WEATHER, UV INDEX, WINDS (MPH), HUMIDITY, AND AN IMAGE that
-// displays the current weather. (cloudy = cloudy image) (as it's own card,
-// and it's the biggest)
-
-// 2) After returning the CURRENT DAY'S WEATHER, I need to POPULATE on the
-// page a 5 Day forecast starting from the next day. The information
-// returning will be the same information. HOWEVER, will be stored in
-// smaller blocks.
-
-// 3) I need to find a way to PERSIST the previous cities that were
-// searched.
-// - And when you click on one of the buttons of the previous city, their
-// weather data will re-populate the page.
-
-
+// search that takes user input and calls the current weather API.
 function userInput() {
     var city = document.getElementById("user-input").value;
     console.log(city);
@@ -30,10 +8,11 @@ function userInput() {
 
 }
 
-
+// current weather API call - calls 5-day forecast at the end
+callAPI();
 function callAPI(city) {
     var apiKey = "27628dc2d5b017cf1761f1dbe7dffc83";
-    var requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey; //replace atlanta w/ city variable when i figure that out.
+    var requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey; 
     console.log(requestURL);
 
     function getAPI(requestURL) {
@@ -44,9 +23,7 @@ function callAPI(city) {
                 console.log(data);
             })
     }
-}
-
-getAPI(requestURL) {
+    getAPI(requestURL);
         
     var cityName = data.name;
     var card = $("<div>").addClass("card");
@@ -63,6 +40,7 @@ getAPI(requestURL) {
         getForecast(lat, lon, cityName);
 }
 
+// 5-day forecast
 function getForecast(lat, lon, cityName) {
     var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
     fetch(queryURL).then(function(response){
@@ -84,7 +62,27 @@ function getForecast(lat, lon, cityName) {
     })
 }
 
+// https://openweathermap.org/api/one-call-api
+// https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
+// ADVICE COLUMN = for this openweathermap api, you will access TWO SEPARATE
+// API CALLS to get this one. (there are two separate urls from the
+// openweathermap website)
 
+// ### I need to do the following:
+// 1) I need to accept a user input that is a city name and it returns the
+// CURRENT DAY'S WEATHER, UV INDEX, WINDS (MPH), HUMIDITY, AND AN IMAGE that
+// displays the current weather. (cloudy = cloudy image) (as it's own card,
+// and it's the biggest)
+
+// 2) After returning the CURRENT DAY'S WEATHER, I need to POPULATE on the
+// page a 5 Day forecast starting from the next day. The information
+// returning will be the same information. HOWEVER, will be stored in
+// smaller blocks.
+
+// 3) I need to find a way to PERSIST the previous cities that were
+// searched.
+// - And when you click on one of the buttons of the previous city, their
+// weather data will re-populate the page.
 
 // apparently i need to use coordinates:
 // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
