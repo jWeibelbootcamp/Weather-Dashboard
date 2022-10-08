@@ -1,3 +1,10 @@
+.body {
+    background-color: aliceblue;
+    background-image: url('../images/wp2771916-anime-background-wallpaper.jpg');
+    background-position: center;
+    background-size: auto;
+}
+
 .header {
     text-align:right;
     padding-right: 25%;
