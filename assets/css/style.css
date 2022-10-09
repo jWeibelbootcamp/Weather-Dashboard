@@ -1,4 +1,4 @@
-.body {
+#background-image {
     background-color: aliceblue;
     background-image: url('../images/wp2771916-anime-background-wallpaper.jpg');
     background-position: center;
@@ -15,9 +15,6 @@
 #search-button {
     color: aliceblue;
     background-color: cornflowerblue;
-    width: 185px;
-    margin-top: 10px;
-    border-radius: 25px;
 }
 
 .flex-parent {

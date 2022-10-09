@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
@@ -15,27 +16,30 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-    <div class="row">
-        <div id="search-bar" class="col-3">
+    <main id="background-image">
+        <div class="row">
             <h3>Search For A City:</h3>
 
-            <input id="user-input" type="text" placeholder="City Name"><br>
-            <button id="search-button" type="button">Search</button>
+            <div class="col-md-3 col-sm-12">
+                <div id="search-bar" class="input-group">
+                    <input class="form-control" type="text" id="user-input" placeholder="City Name">
+                    <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
 
-            <ul id="search-history" class="list-group">
-                <!-- to append search history -->
-            </ul>
-        </div>
+                    <ul id="search-history" class="list-group">
+                        <!-- to append search history -->
+                    </ul>
+                </div>
+            </div>
 
-        <div class="col-9">
-            <div id="today-weather"></div>
-            <!-- to append current day's weather -->
-            <div id="5-day-forecast" class="container flex-parent">
-                <!-- to append 5-day weather -->
+            <div class="col-9">
+                <div id="today-weather"></div>
+                <!-- to append current day's weather -->
+                <div id="5-day-forecast" class="container flex-parent">
+                    <!-- to append 5-day weather -->
+                </div>
             </div>
         </div>
-    </div>
-
+    </main>
 
 
 

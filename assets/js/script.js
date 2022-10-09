@@ -68,7 +68,7 @@ function getForecast(lat, lon) {
             var cardTitle = $('<h2>').addClass('card-title').text(date);
             var card = $('<div>').addClass('card flex-child');
             var cardHeader = $('<div>').addClass('card-header');
-            var cardBody = $('<div>').addClass('card-body';
+            var cardBody = $('<div>').addClass('card-body');
             var imgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@.png');
             var descriptionEl = $('<h5>').addClass('card-text').text('Cond: ' + data.weather[0].description);
             var tempEl = $('<h5>').addClass('card-text').text('Temp: ' + Math.round(data.main.temp) + '˚F');
