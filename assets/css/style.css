@@ -1,5 +1,5 @@
 #background-image {
-    background-color: aliceblue;
+    background-color: azure;
     background-image: url('../images/wp2771916-anime-background-wallpaper.jpg');
     background-position: center;
     background-size: cover;
@@ -13,7 +13,8 @@
 .header {
     text-align:right;
     padding-right: 25%;
-    /* background-image: linear-gradient(to right, , ); */
+    opacity: 0.8;
+    background-image: linear-gradient(to right, rgb(106, 127, 204), rgb(50, 50, 130));
 }
 
 .row {
@@ -26,10 +27,6 @@
 /* #search-bar {
     background-color: ;
 } */
-
-h1, h3, h5 {
-    color: aliceblue;
-}
 
 #search-button {
     color: aliceblue;
