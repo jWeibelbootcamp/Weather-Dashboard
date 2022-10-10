@@ -28,8 +28,20 @@
     background-color: ;
 } */
 
+#user-input {
+    opacity: 0.8;
+}
+
 #search-button {
     color: aliceblue;
+}
+
+#search-history {
+    opacity: 0.8;
+}
+
+#today-weather {
+    opacity: 0.8;
 }
 
 .flex-parent {

@@ -72,10 +72,10 @@ function getForecast(lat, lon) {
             var card = $('<div>').addClass('card flex-child');
             var cardHeader = $('<div>').addClass('card-header');
             var cardBody = $('<div>').addClass('card-body');
-            var imgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@.png');
-            var descriptionEl = $('<h5>').addClass('card-text').text('Cond: ' + data.weather[0].description);
-            var tempEl = $('<h5>').addClass('card-text').text('Temp: ' + Math.round(data.main.temp) + '˚F');
-            var humidityEl = $('<h5>').addClass('card-text').text('Hum: ' + data.main.humidity + '%');
+            // var imgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@.png');
+            // var descriptionEl = $('<h5>').addClass('card-text').text('Cond: ' + data.weather[0].description);
+            // var tempEl = $('<h5>').addClass('card-text').text('Temp: ' + Math.round(data.main.temp) + '˚F');
+            // var humidityEl = $('<h5>').addClass('card-text').text('Hum: ' + data.main.humidity + '%');
 
             $('#5-day-forecast').append(card.append(cardBody.append(cardHeader.append(cardTitle))));
         }
