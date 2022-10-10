@@ -5,17 +5,20 @@ var cityArray = JSON.parse(localStorage.getItem('cityArray')) || [];
 function citySearch(event) {
     event.preventDefault();
     var city = document.getElementById('user-input').value;
-    if (city.value === '') {
-        alert('Please enter a city name.'); //this alert isn't working
-        // } else if () { way to handle a misspelling?
-    } else {
         console.log(city);
         currentWeather(city);
-    }
 }
 
-// search button and click event
+// search button and click event / enter key
 var button = document.getElementById('search-button');
+var input = document.getElementById('user-input');
+input.addEventListener('keypress', function(e) {
+    if (e.which === 13) {
+        event.preventDefault();
+        button.click();
+    }
+});
+
 button.addEventListener('click', citySearch);
 
 // current weather API call - calls 5-day forecast at the end
