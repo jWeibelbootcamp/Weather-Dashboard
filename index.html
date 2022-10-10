@@ -12,11 +12,12 @@
 </head>
 
 <body>
+    <main id="background-image">
+
     <header class="header">
         <h1>Weather Dashboard</h1>
     </header>
 
-    <main id="background-image">
         <div class="row">
             <h3>Search For A City:</h3>
 
@@ -24,13 +25,13 @@
                 <div id="search-bar" class="input-group">
                     <input class="form-control" type="text" id="user-input" placeholder="City Name">
                     <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
-
-                    <ul id="search-history" class="list-group">
-                        <!-- to append search history -->
-                    </ul>
                 </div>
+                <!-- to append search history -->
+                <br>
+                <h5>Recent Searches:</h5>
+                <ul id="search-history" class="list-group"></ul>
+                <br>
             </div>
-
             <div class="col-9">
                 <div id="today-weather"></div>
                 <!-- to append current day's weather -->
