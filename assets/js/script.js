@@ -73,12 +73,12 @@ function getForecast(lat, lon) {
                 var cardBody = $('<div>').addClass('card-body');
                 var cardTitle = $('<h4>').addClass('card-title').text(date);
                 var cardHeader = $('<div>').addClass('card-header');
-                // var imgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@.png');
-                // var descriptionEl = $('<h6>').addClass('card-text').text('Cond: ' + data.weather[0].description);
-                // var tempEl = $('<h6>').addClass('card-text').text('Temp: ' + Math.round(data.main.temp) + '˚F');
-                // var humidityEl = $('<h6>').addClass('card-text').text('Hum: ' + data.main.humidity + '%');
+                var imgEl = $('<img>').attr('src', 'https://openweathermap.org/img/wn/' + highArray[i].weather[0].icon + '@2x.png');
+                var descriptionEl = $('<h6>').addClass('card-text').text('Cond: ' + highArray[i].weather[0].description);
+                var tempEl = $('<h6>').addClass('card-text').text('Temp: ' + Math.round(highArray[i].main.temp) + '˚F');
+                var humidityEl = $('<h6>').addClass('card-text').text('Hum: ' + highArray[i].main.humidity + '%');
 
-                $('#five-day-forecast').append(card.append(cardBody.append(cardHeader.append(cardTitle))));
+                $('#five-day-forecast').append(card.append(cardHeader.append(cardTitle.append(imgEl), cardBody.append(descriptionEl, tempEl, humidityEl))));
             }
         })
 }
