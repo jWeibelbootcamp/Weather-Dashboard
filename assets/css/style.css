@@ -21,13 +21,6 @@
     padding: 0px 20px 0px;
 }
 
-/* .card-header {
-} */
-
-/* #search-bar {
-    background-color: ;
-} */
-
 #user-input {
     opacity: 0.8;
 }
@@ -44,9 +37,15 @@
     opacity: 0.8;
 }
 
+#five-day-forecast {
+    opacity: 0.8;
+    padding: 0%;
+}
+
 .flex-parent {
     display:flex;
     flex-direction: row;
+    /* justify-content: space-between; */
     margin-top: 2em;
 }
 

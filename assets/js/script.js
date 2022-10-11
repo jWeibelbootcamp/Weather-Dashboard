@@ -5,14 +5,14 @@ var cityArray = JSON.parse(localStorage.getItem('cityArray')) || [];
 function citySearch(event) {
     event.preventDefault();
     var city = document.getElementById('user-input').value;
-        console.log(city);
-        currentWeather(city);
+    console.log(city);
+    currentWeather(city);
 }
 
 // search button and click event / enter key
 var button = document.getElementById('search-button');
 var input = document.getElementById('user-input');
-input.addEventListener('keypress', function(e) {
+input.addEventListener('keypress', function (e) {
     if (e.which === 13) {
         event.preventDefault();
         button.click();
@@ -24,7 +24,6 @@ button.addEventListener('click', citySearch);
 // current weather API call - calls 5-day forecast at the end
 function currentWeather(city) {
     var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial';
-    console.log(requestURL);
     fetch(requestURL)
         .then(function (response) {
             return response.json();
@@ -42,6 +41,7 @@ function currentWeather(city) {
             var cardHeader = $('<div>').addClass('card-header');
             var cardBody = $('<div>').addClass("card-body");
             var cardTitle = $('<h2>').addClass('card-title').text(cityName);
+
             var imgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png');
             var descriptionEl = $('<h5>').addClass('card-text').text('Current Conditions: ' + data.weather[0].description);
             var tempEl = $('<h5>').addClass('card-text').text('Temperature: ' + Math.round(data.main.temp) + '˚F');
@@ -58,28 +58,29 @@ function currentWeather(city) {
 // 5-day forecast
 function getForecast(lat, lon) {
     var requestURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey + '&units=imperial';
-    fetch(requestURL).then(function (response) {
-        return response.json();
-    }).then(function (data) {
+    fetch(requestURL)
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
 
-        var highArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === '12:00:00');
-        var lowArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === '00:00:00');
-        $('#5-day-forecast').empty();
-        for (var i = 0; i < highArray.length; i++) {
-            console.log(highArray[i]);
-            var date = new Date(highArray[i].dt * 1000).toDateString().split(' ')[0];
-            var cardTitle = $('<h2>').addClass('card-title').text(date);
-            var card = $('<div>').addClass('card flex-child');
-            var cardHeader = $('<div>').addClass('card-header');
-            var cardBody = $('<div>').addClass('card-body');
-            // var imgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@.png');
-            // var descriptionEl = $('<h5>').addClass('card-text').text('Cond: ' + data.weather[0].description);
-            // var tempEl = $('<h5>').addClass('card-text').text('Temp: ' + Math.round(data.main.temp) + '˚F');
-            // var humidityEl = $('<h5>').addClass('card-text').text('Hum: ' + data.main.humidity + '%');
+            var highArray = data.list.filter(weatherObject => weatherObject.dt_txt.split(" ")[1] === '12:00:00');
+            console.log(highArray);
+            $('#five-day-forecast').empty();
+            for (var i = 0; i < highArray.length; i++) {
+                console.log(highArray[i]);
+                var date = new Date(highArray[i].dt * 1000).toDateString().split(' ')[0];
+                var card = $('<div>').addClass('card flex-child');
+                var cardBody = $('<div>').addClass('card-body');
+                var cardTitle = $('<h4>').addClass('card-title').text(date);
+                var cardHeader = $('<div>').addClass('card-header');
+                // var imgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@.png');
+                // var descriptionEl = $('<h6>').addClass('card-text').text('Cond: ' + data.weather[0].description);
+                // var tempEl = $('<h6>').addClass('card-text').text('Temp: ' + Math.round(data.main.temp) + '˚F');
+                // var humidityEl = $('<h6>').addClass('card-text').text('Hum: ' + data.main.humidity + '%');
 
-            $('#5-day-forecast').append(card.append(cardBody.append(cardHeader.append(cardTitle))));
-        }
-    })
+                $('#five-day-forecast').append(card.append(cardBody.append(cardHeader.append(cardTitle))));
+            }
+        })
 }
 
 // search history
