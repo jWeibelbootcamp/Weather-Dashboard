@@ -69,16 +69,17 @@ function getForecast(lat, lon) {
             for (var i = 0; i < highArray.length; i++) {
                 console.log(highArray[i]);
                 var date = new Date(highArray[i].dt * 1000).toDateString().split(' ')[0];
-                var card = $('<div>').addClass('card flex-child');
+                var card = $('<div>').addClass('card');
                 var cardBody = $('<div>').addClass('card-body');
                 var cardTitle = $('<h4>').addClass('card-title').text(date);
                 var cardHeader = $('<div>').addClass('card-header');
+                
                 var imgEl = $('<img>').attr('src', 'https://openweathermap.org/img/wn/' + highArray[i].weather[0].icon + '@2x.png');
-                var descriptionEl = $('<h6>').addClass('card-text').text('Cond: ' + highArray[i].weather[0].description);
+                var descriptionEl = $('<h6>').addClass('card-text').text('Condition: ' + highArray[i].weather[0].description);
                 var tempEl = $('<h6>').addClass('card-text').text('Temp: ' + Math.round(highArray[i].main.temp) + '˚F');
                 var humidityEl = $('<h6>').addClass('card-text').text('Hum: ' + highArray[i].main.humidity + '%');
 
-                $('#five-day-forecast').append(card.append(cardHeader.append(cardTitle.append(imgEl), cardBody.append(descriptionEl, tempEl, humidityEl))));
+                $('#five-day-forecast').append(card.append(cardHeader.append(cardTitle).append(imgEl), cardBody.append(descriptionEl, tempEl, humidityEl)));
             }
         })
 }

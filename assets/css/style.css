@@ -40,15 +40,24 @@
 #five-day-forecast {
     opacity: 0.8;
     padding: 0%;
-}
-
-.flex-parent {
-    display:flex;
-    flex-direction: row;
-    /* justify-content: space-between; */
     margin-top: 2em;
 }
 
-.flex-child {
-    flex-basis: 20%;
+h4 {
+    display: flex;
+    justify-content: center;
+}
+
+/* weather icons */
+img {
+    background-color: rgb(216, 215, 215);
+    border-radius: 10%;
+    border-bottom: 0;
+    /* margin-left: 5%; */
+    display: flex;
+    justify-content: center;
+}
+
+div.card-header {
+    border: unset;
 }
