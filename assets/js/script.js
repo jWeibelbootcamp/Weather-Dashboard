@@ -47,7 +47,7 @@ function currentWeather(city) {
             var tempEl = $('<h5>').addClass('card-text').text('Temperature: ' + Math.round(data.main.temp) + '˚F');
             var humidityEl = $('<h5>').addClass('card-text').text('Humidity: ' + data.main.humidity + '%');
 
-            $('#today-weather').append(card.append(cardHeader.append(cardTitle.append(imgEl), cardBody.append(descriptionEl, tempEl, humidityEl))));
+            $('#today-weather').append(card.append(cardHeader.append(cardTitle).append(imgEl), cardBody.append(descriptionEl, tempEl, humidityEl)));
 
             var lat = data.coord.lat;
             var lon = data.coord.lon;

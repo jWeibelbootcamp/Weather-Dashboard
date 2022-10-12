@@ -43,6 +43,10 @@
     margin-top: 2em;
 }
 
+h2 {
+    margin-left: 1rem;
+}
+
 h4 {
     display: flex;
     justify-content: center;
@@ -53,11 +57,10 @@ img {
     background-color: rgb(216, 215, 215);
     border-radius: 10%;
     border-bottom: 0;
-    /* margin-left: 5%; */
     display: flex;
-    justify-content: center;
+    margin-left: 1rem;
 }
 
 div.card-header {
     border: unset;
-}
+} 
