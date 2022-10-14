@@ -1,14 +1,15 @@
 #background-image {
     background-color: azure;
     background-image: url('../images/wp2771916-anime-background-wallpaper.jpg');
-    background-position: center;
     background-size: cover;
+    background-position: center;
     position: absolute; 
     top: 0; 
     left: 0; 
     right: 0; 
     bottom: 0; 
-}
+    background-attachment: fixed;
+} /* background still doesn't work right when in phone mode */
 
 .header {
     text-align:right;
@@ -63,4 +64,21 @@ img {
 
 div.card-header {
     border: unset;
-} 
+}
+
+@media only screen and (max-width: 600px) {
+    #background-image {
+        position: relative;
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    #five-day-forecast {
+        display: flex;
+        flex-direction: column;
+    } .card {
+        display:flex;
+        flex-direction: row;
+        width: 30em;
+    }
+  }
